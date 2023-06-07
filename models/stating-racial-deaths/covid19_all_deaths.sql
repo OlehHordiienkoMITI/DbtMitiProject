@@ -1,6 +1,6 @@
 {{
   config(
-    materialized='view'
+    materialized='table'
   )
 }}
 
@@ -33,4 +33,4 @@ cases_deaths_all as (
 )
 
 select * from cases_deaths_all
-limit 2000;
+limit 2000
