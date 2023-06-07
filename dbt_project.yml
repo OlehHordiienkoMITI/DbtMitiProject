@@ -34,5 +34,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_miti_project:
     # Applies to all files under models/example/
-    example:
+    racial_testing_deaths:
       materialized: view
+    stating_racial_deaths:
+      materialized: table
