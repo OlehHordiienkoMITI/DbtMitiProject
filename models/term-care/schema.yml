@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: aggregate_long_term_care
+  - name: cumulative_long_term_care
+  - name: state_test
+  - name: hospitalized_test
