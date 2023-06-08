@@ -9,3 +9,4 @@ where date is not null
   and positive is not null
   and positive_increase is not null
   and states is not null
+order by date

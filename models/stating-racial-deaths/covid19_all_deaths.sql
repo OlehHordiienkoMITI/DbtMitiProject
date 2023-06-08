@@ -23,7 +23,7 @@ black as (
 ),
 
 cases_deaths_all as (
-    select white.date, white.state, white.positive_cases_white, deaths_white,
+    select white.date, coalesce(white.state, black.state, asian.state) as state, white.positive_cases_white, deaths_white,
         black.positive_cases_black, deaths_black,
         IFNULL(asian.positive_cases_asian, 0) as positive_cases_asian, IFNULL(deaths_asian, 0) as deaths_asian
     from white
