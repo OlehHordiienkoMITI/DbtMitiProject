@@ -49,3 +49,6 @@ models:
         description: Deaths cases of the asian
         tests:
           - not_null
+
+  - name: covid19_all_deaths
+    description: one record per date of deaths
