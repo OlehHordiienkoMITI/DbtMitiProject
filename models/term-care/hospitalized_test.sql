@@ -1,9 +1,9 @@
 {{ config(materialized="table") }}
 
 with
-    aggregate as (select * from {{ ref("state_level_aggregate_long_term_care") }}),
+    aggregate as (select * from {{ ref("aggregate_long_term_care") }}),
 
-    cumulative as (select * from {{ ref("state_level_cumulative_long_term_care") }}),
+    cumulative as (select * from {{ ref("cumulative_long_term_care") }}),
 
     states as (select * from {{ ref("code_name") }}),
 
@@ -26,7 +26,7 @@ with
             min(cumulative.resident_positives) as cumulative_resident_positives,
             max(cumulative.resident_deaths) as cumulative_resident_deaths,
             min(cumulative.staff_positives) as cumulative_staff_positives,
-            max(cumulative.staff_deaths) as cumulative_staff_positives,
+            max(cumulative.staff_deaths) as cumulative_staff_deaths,
             sum(cumulative.max_other_positives) as cumulative_max_other_positives,
             sum(cumulative.max_other_deaths) as cumulative_max_other_deaths
         from testing t
