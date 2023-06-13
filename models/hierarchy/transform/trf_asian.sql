@@ -26,4 +26,3 @@ select asian.date,
         asian.cases_asian + asian.deaths_asian as sum_asian
 from asian
 inner join states on states.state = asian.state
-limit 5000

@@ -1,6 +1,6 @@
 {{
   config(
-    materialized="table",
+    materialized="view",
     schema="transform"
   )
 }}
@@ -44,4 +44,4 @@ from
 inner join
     states s ON a.state = s.state
 join
-    open_data o on year = o.year;
+    open_data o on year = o.year

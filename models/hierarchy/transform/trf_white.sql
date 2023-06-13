@@ -26,4 +26,3 @@ select white.date,
         white.cases_white + white.deaths_white as sum_white
 from white
 inner join states on states.state = white.state
-limit 5000
