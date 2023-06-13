@@ -16,14 +16,3 @@ target-path: "target"
 clean-targets:         
   - "target"
   - "dbt_packages"
-
-models:
-  dbt_miti_project:
-    racial_testing_deaths:
-      materialized: view
-    stating_racial_deaths:
-      materialized: table
-    states:
-      materialized: table
-    term-care:
-      materialized: view
