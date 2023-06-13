@@ -7,7 +7,7 @@
 
 with open_data as(
     select country, 
-    year
+    year,
     frequency,
     deaths
 from covid19_open_data.excess_deaths
