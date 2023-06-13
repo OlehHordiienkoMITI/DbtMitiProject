@@ -26,4 +26,3 @@ select black.date,
         black.cases_black + black.deaths_black as sum_black
 from black
 inner join states on states.state = black.state
-limit 5000

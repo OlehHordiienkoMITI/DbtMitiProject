@@ -26,4 +26,3 @@ select latinx.date,
         latinx.cases_latinx + latinx.deaths_latinx as sum_latinx
 from latinx
 inner join states on states.state = latinx.state
-limit 5000
