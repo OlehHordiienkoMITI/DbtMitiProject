@@ -1,7 +1,7 @@
 {{
   config(
     materialized="view",
-    schema="transform"
+    schema="marts"
   )
 }}
 
