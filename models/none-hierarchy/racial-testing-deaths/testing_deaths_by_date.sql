@@ -33,10 +33,10 @@ select
     negative_increase,
     positive,
     positive_increase,
-    general_deaths,
+    open_data.general_deaths,
     case 
-        when general_deaths < 1000 then 'ok'
-        when general_deaths > 1000 then 'bad'
+        when open_data.general_deaths < 1000 then 'ok'
+        when open_data.general_deaths > 1000 then 'bad'
     end
     as status_deaths
 from deaths_racial, open_data
