@@ -9,7 +9,13 @@ with
         select *
         from covid19.state_screenshots
         order by state_name
+    ),
+
+    open_data as (
+        select general_deaths
+        from {{ref("open_data")}}
     )
+    
 select
     deaths_racial.date,
     deaths_racial.state, 
@@ -26,8 +32,14 @@ select
     negative,
     negative_increase,
     positive,
-    positive_increase
-from deaths_racial
+    positive_increase,
+    general_deaths,
+    case 
+        when general_deaths < 1000 then 'ok'
+        when general_deaths > 1000 then 'bad'
+    end
+    as status_deaths
+from deaths_racial, open_data
 inner join testing on deaths_racial.date = testing.date
 inner join states on deaths_racial.state = states.state
 order by date
