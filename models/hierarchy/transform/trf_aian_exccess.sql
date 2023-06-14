@@ -38,10 +38,16 @@ select
     o.country,
     extract(year from a.date) as year,
     o.frequency,
-    o.deaths
+    o.deaths,
+    CASE
+        WHEN o.frequency = 'weekly' THEN 'danger'
+        WHEN o.frequency = 'monthly' THEN 'normal'
+        ELSE 'undefined'
+    END AS type_frequently
 from
     aian a
 inner join
     states s ON a.state = s.state
 join
     open_data o on year = o.year
+where o.deaths > 1000
