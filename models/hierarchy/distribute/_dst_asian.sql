@@ -5,4 +5,4 @@
   )
 }}
 
-select * from {{ref("dst_asian")}}
+select  from 
