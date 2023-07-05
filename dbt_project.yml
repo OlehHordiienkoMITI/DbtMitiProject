@@ -16,3 +16,7 @@ target-path: "target"
 clean-targets:         
   - "target"
   - "dbt_packages"
+
+vars:
+  names: ['dev', 'prod']
+  transform_asin: 'trf_asian'
