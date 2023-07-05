@@ -11,7 +11,7 @@ with asian as (
         cases_asian,
         deaths_asian,
         sum_asian
-    from {{ref( var('transform_asian') )}}
+    from {{ref('transform_asian')}}
 )
 
 select date,
