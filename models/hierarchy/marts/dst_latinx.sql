@@ -1,6 +1,7 @@
 {{
   config(
-    materialized="view",
+    name="ASIIIAN",
+    materialized="table",
     schema="marts"
   )
 }}
