@@ -20,6 +20,6 @@ select date,
     min(deaths_asian) as deaths_asian,
     sum(coalesce(cases_asian, deaths_asian)) as sum,
     avg(sum_asian) as average,
-    {{ var('names') }} as hpp
+    {{ var('names') }} as available_names
 from asian
 group by date, state
