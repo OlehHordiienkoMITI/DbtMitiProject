@@ -20,6 +20,7 @@ select date,
     min(deaths_asian) as deaths_asian,
     sum(coalesce(cases_asian, deaths_asian)) as sum,
     avg(sum_asian) as average,
-    {{ var('names') }} as available_names_const
+    {{ var('names') }} as available_names_const,
+    left(state, 2) as first_left_2
 from asian
 group by date, state
