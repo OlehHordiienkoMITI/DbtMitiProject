@@ -20,4 +20,4 @@ clean-targets:
 vars:
   names: ['dev', 'prod']
   transform_asian: '`maximal-boulder-389014`.`covid19_transform`.`trf_asian`'
-  destination_asian: '`maximal-boulder-389014`.`covid19_marts`.`dst_asian`'
+  destination_asian: '`maximal-boulder-389014`.`covid19_transform`.`trf_asian`'
