@@ -15,6 +15,7 @@ with latinx as (
     from {{ref("trf_latinx")}}
 ),
  
+ 
 aian as (
     select
     date,
