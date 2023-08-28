@@ -1,3 +1,9 @@
+{{
+  config(
+    materialized="view"
+  )
+}}
+
 with aian as (
     select * from {{ref("stg_aian")}}
 ),
