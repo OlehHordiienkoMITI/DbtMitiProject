@@ -1,7 +1,0 @@
-version: 2
-
-models:
-  - name: national_testing
-    description: data about national testing covid19, results, location etc.
-  - name: testing_deaths_by_date
-    description: union of national testing, added information about state, deaths including racial filter

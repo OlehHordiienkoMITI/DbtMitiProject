@@ -22,10 +22,7 @@ aian as (
     state,
     cases_aian,
     deaths_aian,
-    country,
     year,
-    frequency,
-    deaths
     from {{ref("trf_aian_exccess")}}
 )
 
@@ -35,9 +32,8 @@ select latinx.date,
     min(deaths_latinx) as deaths_latinx,
     sum(coalesce(cases_latinx, deaths_latinx)) as sum,
     avg(sum_latinx + cases_aian + deaths_aian) as average,
-    frequency,
     year
 from latinx
 inner join aian on aian.date = latinx.date 
     and aian.state = latinx.state
-group by latinx.date, latinx.state, frequency, year
+group by latinx.date, latinx.state, year
