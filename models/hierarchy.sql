@@ -1,1 +1,1 @@
-select * from {{ref("_dst_asian")}}
+sel from {{ref("_dst_asian")}}
