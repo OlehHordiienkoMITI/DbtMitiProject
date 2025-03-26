@@ -1,1 +1,0 @@
-sel from {{ref("_dst_asian")}}
