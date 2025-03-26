@@ -1,1 +1,7 @@
-select * from {{var('destination_asian')}}
+{{
+  config(
+    materialized="view",
+    schema="distribute"
+  )
+}}
+select * from {{ref('dst_asian')}}
