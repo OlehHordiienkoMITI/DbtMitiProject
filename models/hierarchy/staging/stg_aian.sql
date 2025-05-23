@@ -1,6 +1,7 @@
 {{ config(
     materialized="table",
-    schema="staging"
+    schema="staging",
+     tags=["tag1", "tag2"]
 ) }}
 
 with aian as (
