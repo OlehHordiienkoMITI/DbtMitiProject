@@ -1,0 +1,102 @@
+version: 2
+
+semantic_models:
+  - name: asian_covid_deaths
+    model: ref('trf_asian')
+    entities:
+      - name: date
+        type: PRIMARY
+
+    dimensions:
+      - name: date_day
+        expr: date_trunc('day', date)
+        type: time
+        is_partition: True
+        type_params:
+          time_granularity: day
+
+      - name: date_month
+        expr: date_trunc('month', date)
+        type: time
+        type_params:
+          time_granularity: month
+
+      - name: date_year
+        expr: date_trunc('year', date)
+        type: time
+        type_params:
+          time_granularity: year
+
+      - name: is_deaths_abundant
+        type: categorical
+        expr: case when cases_asian > 50000 then true else false end
+
+      - name: location
+        type: categorical
+        expr: state
+
+    measures:
+      - name: asian_deaths_total
+        agg: sum
+        expr: deaths_asian
+        agg_time_dimension: date_year
+
+      - name: asian_cases_total
+        agg: sum
+        expr: cases_asian
+        agg_time_dimension: date_year
+
+      - name: asian_deaths_median
+        agg: median
+        expr: deaths_asian
+        agg_time_dimension: date_year
+
+      - name: asian_cases_average
+        agg: average
+        expr: cases_asian
+        agg_time_dimension: date_year
+
+metrics:
+  - name: asian_deaths_usa
+    label: Deaths asian people in USA due to Covid19
+    type: simple
+    type_params:
+      measure: asian_deaths_total
+    filter: |
+      {{Dimension('asian_covid_deaths__location')}} == "USA"
+
+  - name: asian_cases_usa
+    label: Covid19 Cases asian people in USA
+    type: simple
+    type_params:
+      measure: asian_cases_total
+    filter: |
+      {{Dimension('asian_covid_deaths__location')}} == "USA"
+  
+  - name: cases_deaths_perc
+    label: Deaths ratio by cases
+    type: ratio
+    type_params:
+      numerator: asian_deaths_usa
+      denominator: asian_cases_usa
+    
+  - name: asian_cases_growth_usa
+    label: Cases growth % M/M
+    type: derived
+    type_params:
+      expr:  (asian_cases - asian_cases_prev_month)*100/asian_cases_prev_month
+      metrics:
+        - name: asian_cases_usa
+          alias: asian_cases
+        - name: asian_cases_usa
+          alias: asian_cases_prev_month
+          offset_window: 1 month
+
+  - name: cumulative_cases_total_l3m
+    label: Cumulative asian cases total (L1M)   
+    type: cumulative
+    type_params:
+      measure: 
+        name: asian_deaths_total
+      cumulative_type_params:
+        window: 3 month
