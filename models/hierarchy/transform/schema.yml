@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: trf_asian  # Replace with the actual file name (without .sql)
+    description: "Aggregated COVID-19 data for Asian demographics, filtered for NY state, joined with state names."
+    columns:
+      - name: date
+        description: "Date of the reported data."
+      - name: state
+        description: "Concatenated state abbreviation and full state name."
+      - name: cases_asian
+        description: "Number of COVID-19 cases among the Asian population."
+      - name: deaths_asian
+        description: "Number of COVID-19 deaths among the Asian population."
+      - name: sum_asian
+        description: "Sum of cases and deaths among the Asian population."
